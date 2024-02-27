@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": 2.1734,
+        "lat": 41.3851
+    },
+    "weather": [
+        {
+            "id": 801,
+            "main": "Clouds",
+            "description": "few clouds",
+            "icon": "02d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 289.21,
+        "feels_like": 288.31,
+        "temp_min": 286.35,
+        "temp_max": 292.02,
+        "pressure": 1008,
+        "humidity": 55
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 8.23,
+        "deg": 310,
+        "gust": 13.89
+    },
+    "clouds": {
+        "all": 20
+    },
+    "dt": 1709052918,
+    "sys": {
+        "type": 2,
+        "id": 2003688,
+        "country": "ES",
+        "sunrise": 1709015417,
+        "sunset": 1709055502
+    },
+    "timezone": 3600,
+    "id": 6544100,
+    "name": "Eixample",
+    "cod": 200
+}
