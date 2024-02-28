@@ -51,6 +51,9 @@
 		2C90A0A92B8FB805004F14BC /* ST_ExtraInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */; };
 		2C90A0AB2B8FBA9A004F14BC /* Double+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AA2B8FBA9A004F14BC /* Double+TimeFormat.swift */; };
 		2C90A0AD2B8FBACA004F14BC /* Double+ToCelcius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */; };
+		2C90A0AF2B8FD72A004F14BC /* SunInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AE2B8FD72A004F14BC /* SunInformationView.swift */; };
+		2C90A0B12B8FD734004F14BC /* SunInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0B02B8FD734004F14BC /* SunInformationViewModel.swift */; };
+		2C90A0B32B8FD879004F14BC /* ST_SunInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */; };
 		2C9ABEA42B8D125100878205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA32B8D125100878205 /* AppDelegate.swift */; };
 		2C9ABEA62B8D125100878205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA52B8D125100878205 /* SceneDelegate.swift */; };
 		2C9ABEAD2B8D125300878205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9ABEAC2B8D125300878205 /* Assets.xcassets */; };
@@ -113,6 +116,9 @@
 		2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ST_ExtraInformationView.swift; sourceTree = "<group>"; };
 		2C90A0AA2B8FBA9A004F14BC /* Double+TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+TimeFormat.swift"; sourceTree = "<group>"; };
 		2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToCelcius.swift"; sourceTree = "<group>"; };
+		2C90A0AE2B8FD72A004F14BC /* SunInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInformationView.swift; sourceTree = "<group>"; };
+		2C90A0B02B8FD734004F14BC /* SunInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInformationViewModel.swift; sourceTree = "<group>"; };
+		2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ST_SunInformationView.swift; sourceTree = "<group>"; };
 		2C9ABEA02B8D125100878205 /* RandomWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9ABEA32B8D125100878205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9ABEA52B8D125100878205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +267,8 @@
 			children = (
 				2C90A07B2B8F2701004F14BC /* MainInformationView.swift */,
 				2C90A07D2B8F272E004F14BC /* MainInformationViewModel.swift */,
+				2C90A0AE2B8FD72A004F14BC /* SunInformationView.swift */,
+				2C90A0B02B8FD734004F14BC /* SunInformationViewModel.swift */,
 				2C90A0942B8F9F30004F14BC /* WindInformationView.swift */,
 				2C90A0982B8FA15C004F14BC /* WindInformationViewModel.swift */,
 				2C90A0A42B8FB6F4004F14BC /* ExtraInformationView.swift */,
@@ -276,6 +284,7 @@
 				2C90A0802B8F2AEE004F14BC /* ST_MainInformationView.swift */,
 				2C90A09A2B8FA232004F14BC /* ST_WindInformationView.swift */,
 				2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */,
+				2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C90A0B12B8FD734004F14BC /* SunInformationViewModel.swift in Sources */,
 				2C90A08D2B8F8212004F14BC /* WeatherToMainScreenViewModelMapper.swift in Sources */,
 				2C90A0572B8E4FB7004F14BC /* URLSessionProtocol.swift in Sources */,
 				2C90A0302B8D1F21004F14BC /* MainViewController.swift in Sources */,
@@ -590,6 +600,7 @@
 				2C90A08B2B8F6E85004F14BC /* Double+RoundedToPlaces.swift in Sources */,
 				2C90A0312B8D1F21004F14BC /* MainViewModel.swift in Sources */,
 				2C90A09D2B8FA6F1004F14BC /* UILabel+Underline.swift in Sources */,
+				2C90A0AF2B8FD72A004F14BC /* SunInformationView.swift in Sources */,
 				2C90A0A32B8FB439004F14BC /* UIAlertController+show.swift in Sources */,
 				2C90A0932B8F851C004F14BC /* WeatherCoordinates.swift in Sources */,
 				2C90A0A72B8FB741004F14BC /* ExtraInformationViewModel.swift in Sources */,
@@ -604,6 +615,7 @@
 				2C90A0722B8E6041004F14BC /* URLSessionMock.swift in Sources */,
 				2C90A0742B8E61EB004F14BC /* URLSessionAPIClientSpec.swift in Sources */,
 				2C90A0812B8F2AEE004F14BC /* ST_MainInformationView.swift in Sources */,
+				2C90A0B32B8FD879004F14BC /* ST_SunInformationView.swift in Sources */,
 				2C90A0A92B8FB805004F14BC /* ST_ExtraInformationView.swift in Sources */,
 				2C90A0862B8F5C37004F14BC /* KingFisher+MockImage.swift in Sources */,
 				2C90A09B2B8FA232004F14BC /* ST_WindInformationView.swift in Sources */,

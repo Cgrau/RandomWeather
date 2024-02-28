@@ -13,8 +13,8 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
             weather: mapWeather(input.weather),
             extraInformation: mapExtraInfo(input.main),
             wind: mapWind(input.wind),
-            sunriseTime: input.sys.sunrise.toTimeFormat(),
-            sunsetTime: input.sys.sunset.toTimeFormat())
+            sunriseTime: input.sys.sunrise.toTimeFormat(timeZoneOffsetInSeconds: input.timezone),
+            sunsetTime: input.sys.sunset.toTimeFormat(timeZoneOffsetInSeconds: input.timezone))
    }
    
    private func mapWeather(_ input: [WeatherInfoDataModel]) -> [WeatherInfoModel] {

@@ -41,9 +41,10 @@ final class MainView: View {
       return stackView
    }()
    
-   private var informationView = MainInformationView()
-   private var windInformationView = WindInformationView()
-   private var extraInformationView = ExtraInformationView()
+   private let informationView = MainInformationView()
+   private let sunInformationView = SunInformationView()
+   private let windInformationView = WindInformationView()
+   private let extraInformationView = ExtraInformationView()
    
    override func setupView() {
       backgroundColor = .white
@@ -52,7 +53,7 @@ final class MainView: View {
    }
    
    private func addSubviews() {
-      [informationView, windInformationView, extraInformationView].forEach(stackView.addArrangedSubview)
+      [informationView, sunInformationView, windInformationView, extraInformationView].forEach(stackView.addArrangedSubview)
       scrollView.addSubview(stackView)
       [navigationBar, scrollView].forEach(addSubview)
    }
@@ -85,6 +86,7 @@ extension MainView {
    func apply(viewModel: MainScreenViewModel) {
       navigationItem.title = viewModel.navigationTitle
       informationView.apply(viewModel: viewModel.information)
+      sunInformationView.apply(viewModel: viewModel.sunInformation)
       extraInformationView.apply(viewModel: viewModel.extraInformation)
       guard let windInformation = viewModel.windInformation else {
          windInformationView.removeFromSuperview()

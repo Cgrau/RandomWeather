@@ -25,6 +25,11 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
          static let seaLevel = "Pressure at sea level: %.0f hPa"
          static let groundLevel = "Pressure at ground level: %.0f hPa"
       }
+      enum SunInformation {
+         static let title = "Sunrise and sunset times:"
+         static let sunrise = "Sunrise: %@"
+         static let sunset = "Sunset: %@"
+      }
    }
    
    func map(_ input: WeatherModel) -> MainScreenViewModel {
@@ -40,6 +45,8 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
             minTemperature: map(minTemperature: input.extraInformation.minTemperature),
             maxTemperature: map(maxTemperature: input.extraInformation.maxTemperature)
          ), 
+         sunInformation: map(sunriseTime: input.sunriseTime,
+                             sunsetTime: input.sunsetTime),
          windInformation: map(wind: input.wind),
          extraInformation: map(extraInformation: input.extraInformation)
       )
@@ -94,5 +101,12 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
             humidity: String(format: Constants.ExtraInformation.humidity, extraInformation.humidity),
             seaLevel: String(format: Constants.ExtraInformation.seaLevel, extraInformation.seaLevel),
             groundLevel: String(format: Constants.ExtraInformation.groundLevel, extraInformation.groundLevel))
+   }
+   
+   private func map(sunriseTime: String, sunsetTime: String) -> SunInformationViewModel {
+      .init(title: Constants.SunInformation.title,
+            sunrise: String(format: Constants.SunInformation.sunrise, sunriseTime),
+            sunset: String(format: Constants.SunInformation.sunset, sunsetTime),
+            icon: .sun)
    }
 }
