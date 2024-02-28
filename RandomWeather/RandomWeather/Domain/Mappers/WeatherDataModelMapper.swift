@@ -7,7 +7,7 @@ protocol WeatherDataModelMapping {
 final class WeatherDataModelMapper: WeatherDataModelMapping {
    func map(_ input: WeatherDataModel) -> WeatherModel {
       .init(city: input.name,
-            coutry: input.sys.country ?? "DummyCountry",
+            coutry: input.sys.country ?? "Unknown",
             coordinates: .init(longitude: input.coordinates.longitude,
                                latitude: input.coordinates.latitude),
             weather: mapWeather(input.weather),
@@ -18,18 +18,33 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
    }
    
    private func mapWeather(_ input: [WeatherInfoDataModel]) -> [WeatherInfoModel] {
-      [.init(main: "", description: "", icon: "")]
+      input.map {
+         WeatherInfoModel(main: $0.main, description: $0.description, icon: $0.icon)
+      }
    }
    
    private func mapExtraInfo(_ input: MainDataModel) -> ExtraInformationModel {
-      .init(temperature: 1, feelsLike: 1, minTemperature: 1, maxTemperature: 1, pressure: 1, humidity: 1, seaLevel: 1, groundLevel: 1)
+      .init(temperature: input.temperature,
+            feelsLike: input.feelsLike,
+            minTemperature: input.minTemperature,
+            maxTemperature: input.maxTemperature,
+            pressure: input.pressure,
+            humidity: input.humidity,
+            seaLevel: input.seaLevel,
+            groundLevel: input.groundLevel)
    }
    
    private func mapWind(_ input: WindDataModel) -> WindModel {
-      .init(speed: 1, directionDegrees: 1, gust: 1)
+      .init(speed: input.speed,
+            directionDegrees: input.directionDegrees,
+            gust: input.gust)
    }
    
    private func mapTime(_ input: Double) -> String {
-      "\(NSDate(timeIntervalSince1970: input))"
+      let date = Date(timeIntervalSince1970: input)
+      let formatter = DateFormatter()
+      formatter.dateFormat = "HH:mm"
+      let time = formatter.string(from: date)
+      return time
    }
 }

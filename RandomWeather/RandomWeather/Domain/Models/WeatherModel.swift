@@ -23,12 +23,12 @@ struct WeatherInfoModel {
 
 // MARK: - ExtraInformation
 struct ExtraInformationModel {
-   let temperature, feelsLike, minTemperature, maxTemperature, pressure, humidity, seaLevel, groundLevel: Double
+   let temperature, feelsLike, minTemperature, maxTemperature, pressure, humidity, seaLevel, groundLevel: Double?
 }
 
 // MARK: - Wind
 struct WindModel {
-   let speed: Double
-   let directionDegrees: Int
-   let gust: Double
+   let speed: Double?
+   let directionDegrees: Int?
+   let gust: Double?
 }
