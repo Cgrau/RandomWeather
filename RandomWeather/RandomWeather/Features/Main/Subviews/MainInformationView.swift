@@ -11,7 +11,7 @@ final class MainInformationView: View {
          static let font = UIFont.boldSystemFont(ofSize: 18)
       }
       enum Temperature {
-         static let font = UIFont.boldSystemFont(ofSize: 80)
+         static let font = UIFont.boldSystemFont(ofSize: 65)
       }
       enum Description {
          static let font = UIFont.boldSystemFont(ofSize: 20)

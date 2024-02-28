@@ -24,10 +24,10 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
    }
    
    private func mapExtraInfo(_ input: MainDataModel) -> ExtraInformationModel {
-      .init(temperature: input.temperature,
-            feelsLike: input.feelsLike,
-            minTemperature: input.minTemperature,
-            maxTemperature: input.maxTemperature,
+      .init(temperature: convert(farenheit: input.temperature),
+            feelsLike: convert(farenheit: input.feelsLike),
+            minTemperature: convert(farenheit: input.minTemperature),
+            maxTemperature: convert(farenheit: input.maxTemperature),
             pressure: input.pressure,
             humidity: input.humidity,
             seaLevel: input.seaLevel,
@@ -46,5 +46,10 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
       formatter.dateFormat = "HH:mm"
       let time = formatter.string(from: date)
       return time
+   }
+   
+   private func convert(farenheit: Double?) -> Double {
+      guard let farenheit else { return 0 }
+      return (farenheit / 33.8).rounded(to: 1)
    }
 }

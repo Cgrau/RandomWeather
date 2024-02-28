@@ -1,10 +1,10 @@
 PODS:
-  - Kingfisher (7.10.2)
+  - Kingfisher (7.11.0)
   - SnapKit (5.6.0)
   - SnapshotTesting (1.9.0)
 
 DEPENDENCIES:
-  - Kingfisher (= 7.10.2)
+  - Kingfisher (= 7.11)
   - SnapKit (= 5.6.0)
   - SnapshotTesting (= 1.9.0)
 
@@ -15,10 +15,10 @@ SPEC REPOS:
     - SnapshotTesting
 
 SPEC CHECKSUMS:
-  Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
+  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
 
-PODFILE CHECKSUM: 643b021f261d36b260dc16cb4f01aa7083e0ddf8
+PODFILE CHECKSUM: 70b4748587a814fe5f2594abe34e288efe2cc8c3
 
 COCOAPODS: 1.15.2

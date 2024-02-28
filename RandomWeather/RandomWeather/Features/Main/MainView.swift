@@ -11,11 +11,12 @@ final class MainView: View {
          static let font = UIFont.boldSystemFont(ofSize: 32)
       }
    }
+   
    weak var delegate: MainViewDelegate?
    
    let navigationItem: UINavigationItem = {
       let navigationItem = UINavigationItem()
-      let navigationButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: MainView.self, action: #selector(reloadAction))
+      let navigationButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: nil, action: #selector(reloadAction))
       navigationItem.rightBarButtonItem = navigationButton
       return navigationItem
    }()
@@ -43,13 +44,11 @@ final class MainView: View {
    override func setupConstraints() {
       navigationBar.snp.makeConstraints { make in
          make.top.equalTo(safeAreaLayoutGuide)
-         make.leading.equalToSuperview()
-         make.trailing.equalToSuperview()
+         make.horizontalEdges.equalToSuperview()
       }
       informationView.snp.makeConstraints { make in
          make.top.equalTo(navigationBar.snp.bottom).offset(Spacing.m)
-         make.leading.equalToSuperview()
-         make.trailing.equalToSuperview()
+         make.horizontalEdges.equalToSuperview()
       }
    }
    
