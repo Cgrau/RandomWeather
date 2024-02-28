@@ -37,7 +37,7 @@ enum WeatherEndpoint: APIEndpoint {
       case .getWeather(let request):
          return ["lat": request.latitude,
                  "lon": request.longitude,
-                 "appid": Constants.appId] //will save appid in other place
+                 "appid": Constants.appId]
       }
    }
 }

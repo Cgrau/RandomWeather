@@ -23,6 +23,16 @@ final class WindInformationView: View {
       return label
    }()
    
+   private var mainStackView: UIStackView = {
+      let stackView = UIStackView()
+      stackView.axis = .horizontal
+      stackView.alignment = .fill
+      stackView.distribution = .equalSpacing
+      stackView.spacing = Spacing.xxl
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+      return stackView
+   }()
+   
    private var speedLabel: UILabel = {
       let label = UILabel()
       label.textColor = .black
@@ -66,7 +76,8 @@ final class WindInformationView: View {
    
    private func addSubviews() {
       [speedLabel, gustLabel].forEach(informationStackView.addArrangedSubview)
-      [titleLabel, informationStackView, iconImageView].forEach(addSubview)
+      [iconImageView, informationStackView].forEach(mainStackView.addArrangedSubview)
+      [titleLabel, mainStackView].forEach(addSubview)
    }
    
    override func setupConstraints() {
@@ -75,16 +86,13 @@ final class WindInformationView: View {
          make.leading.equalToSuperview()
          make.trailing.equalToSuperview().offset(-Spacing.s)
       }
-      informationStackView.snp.makeConstraints({ make in
+      mainStackView.snp.makeConstraints({ make in
          make.top.equalTo(titleLabel.snp.bottom).offset(Spacing.s)
-         make.leading.equalToSuperview().offset(Spacing.s)
+         make.centerX.equalToSuperview()
          make.bottom.equalToSuperview().offset(-Spacing.s)
       })
       iconImageView.snp.makeConstraints { make in
-         make.centerY.equalTo(informationStackView)
          make.size.equalTo(Constants.Icon.size)
-         make.leading.equalTo(informationStackView.snp.trailing)
-         make.trailing.equalToSuperview().offset(-Spacing.s)
       }
    }
 }

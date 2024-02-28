@@ -5,7 +5,7 @@ typealias MainViewModelOutput = AnyPublisher<MainViewState, Never>
 
 public struct MainViewModelInput {
    let onAppear: AnyPublisher<Void, Never>
-   let onReload: AnyPublisher<Void, Never>
+   let onReloadTapped: AnyPublisher<Void, Never>
 }
 
 protocol MainViewModelable: AnyObject {
@@ -37,18 +37,20 @@ public class MainViewModel: ObservableObject, MainViewModelable {
          .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
             guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
             return self.getNewData()
-         }.eraseToAnyPublisher()
+         }
+         .eraseToAnyPublisher()
       
-      let onReloadAction = input.onReload
+      let onReloadAction = input.onReloadTapped
          .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
             guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
             return self.getNewData()
-         }.eraseToAnyPublisher()
+         }
+         .eraseToAnyPublisher()
       
-      let loadingActions = Publishers.Merge(input.onAppear, input.onReload)
-        .print("Should ShowLoading")
-        .map { _ in return MainViewState.loading }
-        .eraseToAnyPublisher()
+      let loadingActions = Publishers.Merge(input.onAppear, input.onReloadTapped)
+         .print("Should ShowLoading")
+         .map { _ in return MainViewState.loading }
+         .eraseToAnyPublisher()
       
       return Publishers.Merge3(loadingActions, onAppearAction, onReloadAction)
          .removeDuplicates()

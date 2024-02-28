@@ -8,7 +8,7 @@ class ST_WindInformationView: XCTestCase {
    
    override func setUp() {
       super.setUp()
-      sut = WindInformationView(frame: .init(x: 0, y: 0, width: 320, height: 80))
+      sut = WindInformationView(frame: .init(x: 0, y: 0, width: 320, height: 90))
    }
    
    func test_view() {

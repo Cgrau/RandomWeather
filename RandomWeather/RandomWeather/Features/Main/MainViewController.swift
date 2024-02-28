@@ -39,7 +39,7 @@ final class MainViewController: UIViewController {
    func bundToViewModel() {
       cancellables.removeAll()
       let input = MainViewModelInput(onAppear: onAppearPublisher.eraseToAnyPublisher(), 
-                                     onReload: onReloadPublisher.eraseToAnyPublisher())
+                                     onReloadTapped: onReloadPublisher.eraseToAnyPublisher())
       
       let output = viewModel.transform(input: input)
       output.sink { [weak self] state in

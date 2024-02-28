@@ -88,8 +88,6 @@ final class SunInformationView: View {
       mainStackView.snp.makeConstraints({ make in
          make.top.equalTo(titleLabel.snp.bottom).offset(Spacing.s)
          make.centerX.equalToSuperview()
-//         make.leading.equalToSuperview().offset(Spacing.s)
-//         make.trailing.equalToSuperview().offset(-Spacing.s)
          make.bottom.equalToSuperview().offset(-Spacing.s)
       })
       iconImageView.snp.makeConstraints { make in

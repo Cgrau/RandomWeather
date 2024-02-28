@@ -64,7 +64,7 @@ final class MainView: View {
          make.horizontalEdges.equalToSuperview()
       }
       scrollView.snp.makeConstraints { make in
-         make.top.equalTo(navigationBar.snp.bottom).offset(Spacing.m)
+         make.top.equalTo(navigationBar.snp.bottom)
          make.horizontalEdges.equalTo(safeAreaLayoutGuide)
          make.bottom.equalToSuperview()
       }
