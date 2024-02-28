@@ -15,4 +15,5 @@ struct MainScreenViewModel: Equatable {
    var navigationTitle: String
    var information: MainInformationViewModel
    var windInformation: WindInformationViewModel?
+   var extraInformation: ExtraInformationViewModel
 }

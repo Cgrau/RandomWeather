@@ -13,8 +13,8 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
             weather: mapWeather(input.weather),
             extraInformation: mapExtraInfo(input.main),
             wind: mapWind(input.wind),
-            sunriseTime: mapTime(input.sys.sunrise),
-            sunsetTime: mapTime(input.sys.sunset))
+            sunriseTime: input.sys.sunrise.toTimeFormat(),
+            sunsetTime: input.sys.sunset.toTimeFormat())
    }
    
    private func mapWeather(_ input: [WeatherInfoDataModel]) -> [WeatherInfoModel] {
@@ -24,10 +24,10 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
    }
    
    private func mapExtraInfo(_ input: MainDataModel) -> ExtraInformationModel {
-      .init(temperature: convert(farenheit: input.temperature),
-            feelsLike: convert(farenheit: input.feelsLike),
-            minTemperature: convert(farenheit: input.minTemperature),
-            maxTemperature: convert(farenheit: input.maxTemperature),
+      .init(temperature: input.temperature.toCelcius(),
+            feelsLike: input.feelsLike.toCelcius(),
+            minTemperature: input.minTemperature.toCelcius(),
+            maxTemperature: input.maxTemperature.toCelcius(),
             pressure: input.pressure,
             humidity: input.humidity,
             seaLevel: input.seaLevel,
@@ -38,18 +38,5 @@ final class WeatherDataModelMapper: WeatherDataModelMapping {
       .init(speed: input.speed,
             directionDegrees: input.directionDegrees,
             gust: input.gust)
-   }
-   
-   private func mapTime(_ input: Double) -> String {
-      let date = Date(timeIntervalSince1970: input)
-      let formatter = DateFormatter()
-      formatter.dateFormat = "HH:mm"
-      let time = formatter.string(from: date)
-      return time
-   }
-   
-   private func convert(farenheit: Double?) -> Double {
-      guard let farenheit else { return 0 }
-      return (farenheit / 33.8).rounded(to: 1)
    }
 }

@@ -14,8 +14,16 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
       static let minTemperature = "L: %.1f°C"
       static let maxTemperature = "H: %.1f°C"
       enum Wind {
+         static let title = "Wind Information:"
          static let speed = "Speed: %.2f"
          static let gust = "Gust: %.2f"
+      }
+      enum ExtraInformation {
+         static let title = "Extra Information:"
+         static let pressure = "Pressure: %.0f hPa"
+         static let humidity = "Humidity: %.0f%%"
+         static let seaLevel = "Pressure at sea level: %.0f hPa"
+         static let groundLevel = "Pressure at ground level: %.0f hPa"
       }
    }
    
@@ -32,7 +40,8 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
             minTemperature: map(minTemperature: input.extraInformation.minTemperature),
             maxTemperature: map(maxTemperature: input.extraInformation.maxTemperature)
          ), 
-         windInformation: map(wind: input.wind)
+         windInformation: map(wind: input.wind),
+         extraInformation: map(extraInformation: input.extraInformation)
       )
    }
    
@@ -73,9 +82,17 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
          arrow = .upArrow.rotated(byDegrees: CGFloat(windDirection))
       }
       guard let speed = wind.speed, let gust = wind.gust else { return nil }
-      return .init(title: "Wind Information:",
+      return .init(title: Constants.Wind.title,
                    speed: String(format: Constants.Wind.speed, speed),
                    gust: String(format: Constants.Wind.gust, gust),
                    directionImage: arrow)
+   }
+   
+   private func map(extraInformation: ExtraInformationModel) -> ExtraInformationViewModel {
+      .init(title: Constants.ExtraInformation.title,
+            pressure: String(format: Constants.ExtraInformation.pressure, extraInformation.pressure),
+            humidity: String(format: Constants.ExtraInformation.humidity, extraInformation.humidity),
+            seaLevel: String(format: Constants.ExtraInformation.seaLevel, extraInformation.seaLevel),
+            groundLevel: String(format: Constants.ExtraInformation.groundLevel, extraInformation.groundLevel))
    }
 }

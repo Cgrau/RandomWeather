@@ -43,6 +43,7 @@ final class MainView: View {
    
    private var informationView = MainInformationView()
    private var windInformationView = WindInformationView()
+   private var extraInformationView = ExtraInformationView()
    
    override func setupView() {
       backgroundColor = .white
@@ -51,7 +52,7 @@ final class MainView: View {
    }
    
    private func addSubviews() {
-      addStackedViewsWithSeparators()
+      [informationView, windInformationView, extraInformationView].forEach(stackView.addArrangedSubview)
       scrollView.addSubview(stackView)
       [navigationBar, scrollView].forEach(addSubview)
    }
@@ -63,12 +64,14 @@ final class MainView: View {
       }
       scrollView.snp.makeConstraints { make in
          make.top.equalTo(navigationBar.snp.bottom).offset(Spacing.m)
-         make.horizontalEdges.equalToSuperview()
+         make.horizontalEdges.equalTo(safeAreaLayoutGuide)
          make.bottom.equalToSuperview()
       }
       stackView.snp.makeConstraints { make in
          make.top.equalToSuperview().offset(Spacing.m)
          make.centerX.equalToSuperview()
+         make.leading.equalToSuperview().offset(Spacing.m)
+         make.trailing.equalToSuperview().offset(-Spacing.m)
          make.bottom.equalToSuperview().offset(-Spacing.m)
       }
    }
@@ -76,28 +79,13 @@ final class MainView: View {
    @objc private func reloadAction() {
       delegate?.didTapReloadButton()
    }
-   
-   private func addStackedViewsWithSeparators() {
-      let views: [UIView] = [informationView, windInformationView]
-      
-      views.forEach(stackView.addArrangedSubview)
-      
-      for (index, _) in views.dropLast().enumerated() {
-         let separatorView = SeparatorView()
-         stackView.insertArrangedSubview(separatorView, at: index+1)
-         separatorView.snp.makeConstraints({ make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(2)
-         })
-      }
-   }
 }
 
 extension MainView {
    func apply(viewModel: MainScreenViewModel) {
       navigationItem.title = viewModel.navigationTitle
       informationView.apply(viewModel: viewModel.information)
+      extraInformationView.apply(viewModel: viewModel.extraInformation)
       guard let windInformation = viewModel.windInformation else {
          windInformationView.removeFromSuperview()
          return

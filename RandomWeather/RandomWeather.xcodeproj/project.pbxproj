@@ -46,6 +46,11 @@
 		2C90A09F2B8FABFA004F14BC /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A09E2B8FABFA004F14BC /* SeparatorView.swift */; };
 		2C90A0A12B8FB33B004F14BC /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A02B8FB33B004F14BC /* Haptics.swift */; };
 		2C90A0A32B8FB439004F14BC /* UIAlertController+show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A22B8FB439004F14BC /* UIAlertController+show.swift */; };
+		2C90A0A52B8FB6F4004F14BC /* ExtraInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A42B8FB6F4004F14BC /* ExtraInformationView.swift */; };
+		2C90A0A72B8FB741004F14BC /* ExtraInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A62B8FB741004F14BC /* ExtraInformationViewModel.swift */; };
+		2C90A0A92B8FB805004F14BC /* ST_ExtraInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */; };
+		2C90A0AB2B8FBA9A004F14BC /* Double+TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AA2B8FBA9A004F14BC /* Double+TimeFormat.swift */; };
+		2C90A0AD2B8FBACA004F14BC /* Double+ToCelcius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */; };
 		2C9ABEA42B8D125100878205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA32B8D125100878205 /* AppDelegate.swift */; };
 		2C9ABEA62B8D125100878205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA52B8D125100878205 /* SceneDelegate.swift */; };
 		2C9ABEAD2B8D125300878205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9ABEAC2B8D125300878205 /* Assets.xcassets */; };
@@ -103,6 +108,11 @@
 		2C90A09E2B8FABFA004F14BC /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		2C90A0A02B8FB33B004F14BC /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		2C90A0A22B8FB439004F14BC /* UIAlertController+show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+show.swift"; sourceTree = "<group>"; };
+		2C90A0A42B8FB6F4004F14BC /* ExtraInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraInformationView.swift; sourceTree = "<group>"; };
+		2C90A0A62B8FB741004F14BC /* ExtraInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraInformationViewModel.swift; sourceTree = "<group>"; };
+		2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ST_ExtraInformationView.swift; sourceTree = "<group>"; };
+		2C90A0AA2B8FBA9A004F14BC /* Double+TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+TimeFormat.swift"; sourceTree = "<group>"; };
+		2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+ToCelcius.swift"; sourceTree = "<group>"; };
 		2C9ABEA02B8D125100878205 /* RandomWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9ABEA32B8D125100878205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9ABEA52B8D125100878205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +263,8 @@
 				2C90A07D2B8F272E004F14BC /* MainInformationViewModel.swift */,
 				2C90A0942B8F9F30004F14BC /* WindInformationView.swift */,
 				2C90A0982B8FA15C004F14BC /* WindInformationViewModel.swift */,
+				2C90A0A42B8FB6F4004F14BC /* ExtraInformationView.swift */,
+				2C90A0A62B8FB741004F14BC /* ExtraInformationViewModel.swift */,
 				2C90A09E2B8FABFA004F14BC /* SeparatorView.swift */,
 			);
 			path = Subviews;
@@ -263,6 +275,7 @@
 			children = (
 				2C90A0802B8F2AEE004F14BC /* ST_MainInformationView.swift */,
 				2C90A09A2B8FA232004F14BC /* ST_WindInformationView.swift */,
+				2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +296,8 @@
 				2C90A09C2B8FA6F1004F14BC /* UILabel+Underline.swift */,
 				2C90A0A02B8FB33B004F14BC /* Haptics.swift */,
 				2C90A0A22B8FB439004F14BC /* UIAlertController+show.swift */,
+				2C90A0AA2B8FBA9A004F14BC /* Double+TimeFormat.swift */,
+				2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -553,9 +568,12 @@
 				2C90A07E2B8F272E004F14BC /* MainInformationViewModel.swift in Sources */,
 				2C90A02F2B8D1F21004F14BC /* MainView.swift in Sources */,
 				2C90A03C2B8E1151004F14BC /* URLSessionAPIClient.swift in Sources */,
+				2C90A0AD2B8FBACA004F14BC /* Double+ToCelcius.swift in Sources */,
 				2C90A0992B8FA15C004F14BC /* WindInformationViewModel.swift in Sources */,
 				2C90A0472B8E1677004F14BC /* GetWeather.swift in Sources */,
 				2C90A07C2B8F2701004F14BC /* MainInformationView.swift in Sources */,
+				2C90A0AB2B8FBA9A004F14BC /* Double+TimeFormat.swift in Sources */,
+				2C90A0A52B8FB6F4004F14BC /* ExtraInformationView.swift in Sources */,
 				2C90A09F2B8FABFA004F14BC /* SeparatorView.swift in Sources */,
 				2C90A0952B8F9F30004F14BC /* WindInformationView.swift in Sources */,
 				2C90A0282B8D161C004F14BC /* Spacing.swift in Sources */,
@@ -574,6 +592,7 @@
 				2C90A09D2B8FA6F1004F14BC /* UILabel+Underline.swift in Sources */,
 				2C90A0A32B8FB439004F14BC /* UIAlertController+show.swift in Sources */,
 				2C90A0932B8F851C004F14BC /* WeatherCoordinates.swift in Sources */,
+				2C90A0A72B8FB741004F14BC /* ExtraInformationViewModel.swift in Sources */,
 				2C90A0382B8E10CA004F14BC /* APIEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +604,7 @@
 				2C90A0722B8E6041004F14BC /* URLSessionMock.swift in Sources */,
 				2C90A0742B8E61EB004F14BC /* URLSessionAPIClientSpec.swift in Sources */,
 				2C90A0812B8F2AEE004F14BC /* ST_MainInformationView.swift in Sources */,
+				2C90A0A92B8FB805004F14BC /* ST_ExtraInformationView.swift in Sources */,
 				2C90A0862B8F5C37004F14BC /* KingFisher+MockImage.swift in Sources */,
 				2C90A09B2B8FA232004F14BC /* ST_WindInformationView.swift in Sources */,
 			);

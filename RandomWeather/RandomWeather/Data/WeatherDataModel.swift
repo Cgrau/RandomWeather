@@ -56,7 +56,7 @@ struct CoordinatesDataModel: Codable {
 
 // MARK: - Main
 struct MainDataModel: Codable {
-   let temperature, feelsLike, minTemperature, maxTemperature, pressure, humidity, seaLevel, groundLevel: Double?
+   let temperature, feelsLike, minTemperature, maxTemperature, pressure, humidity, seaLevel, groundLevel: Double
    enum CodingKeys: String, CodingKey {
       case temperature = "temp"
       case feelsLike = "feels_like"
