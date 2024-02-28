@@ -2,23 +2,29 @@ PODS:
   - Kingfisher (7.11.0)
   - SnapKit (5.6.0)
   - SnapshotTesting (1.9.0)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
 
 DEPENDENCIES:
   - Kingfisher (= 7.11)
   - SnapKit (= 5.6.0)
   - SnapshotTesting (= 1.9.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - Kingfisher
     - SnapKit
     - SnapshotTesting
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
 
-PODFILE CHECKSUM: 70b4748587a814fe5f2594abe34e288efe2cc8c3
+PODFILE CHECKSUM: 42b8c7031b3b802cec81451e40b1a4a7a2ab6367
 
 COCOAPODS: 1.15.2

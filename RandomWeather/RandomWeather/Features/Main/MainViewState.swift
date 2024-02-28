@@ -1,5 +1,5 @@
 enum MainViewErrorType: String {
-   case inconsistency = "This should not happen, review your code"
+   case inconsistency = "This is embarassing, this should not happen"
    case requestFailed = "Request has failed"
    case decodingFailure = "Failed decoding the json response"
 }

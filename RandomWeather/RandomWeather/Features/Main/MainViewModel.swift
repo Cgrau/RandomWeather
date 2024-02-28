@@ -5,6 +5,7 @@ typealias MainViewModelOutput = AnyPublisher<MainViewState, Never>
 
 public struct MainViewModelInput {
    let onAppear: AnyPublisher<Void, Never>
+   let onReload: AnyPublisher<Void, Never>
 }
 
 protocol MainViewModelable: AnyObject {
@@ -35,22 +36,37 @@ public class MainViewModel: ObservableObject, MainViewModelable {
       let onAppearAction = input.onAppear
          .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
             guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
-            return self.getInformation()
-               .receive(on: scheduler)
-               .map { viewModel in
-                  return .loaded(viewModel)
-               }
-               .catch { _ in
-                  return Just(.error(.requestFailed)).eraseToAnyPublisher()
-               }
-               .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
-               .eraseToAnyPublisher()
+            return self.getNewData()
+         }.eraseToAnyPublisher()
+      
+      let onReloadAction = input.onReload
+         .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
+            guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
+            return self.getNewData()
+         }.eraseToAnyPublisher()
+      
+      let loadingActions = Publishers.Merge(input.onAppear, input.onReload)
+        .print("Should ShowLoading")
+        .map { _ in return MainViewState.loading }
+        .eraseToAnyPublisher()
+      
+      return Publishers.Merge3(loadingActions, onAppearAction, onReloadAction)
+         .removeDuplicates()
+         .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
+         .eraseToAnyPublisher()
+   }
+   
+   private func getNewData() -> MainViewModelOutput {
+      self.getInformation()
+         .receive(on: scheduler)
+         .map { viewModel in
+            return .loaded(viewModel)
+         }
+         .catch { _ in
+            return Just(.error(.requestFailed)).eraseToAnyPublisher()
          }
          .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
-         .removeDuplicates()
          .eraseToAnyPublisher()
-      
-      return onAppearAction
    }
 }
 

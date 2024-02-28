@@ -1,10 +1,12 @@
 import UIKit
 import Combine
+import SVProgressHUD
 
 final class MainViewController: UIViewController {
    private let mainView = MainView()
    private var viewModel: MainViewModelable
    private var onAppearPublisher = PassthroughSubject<Void, Never>()
+   private var onReloadPublisher = PassthroughSubject<Void, Never>()
    private var cancellables: Set<AnyCancellable> = []
    
    required init(viewModel: MainViewModelable) {
@@ -36,7 +38,8 @@ final class MainViewController: UIViewController {
    
    func bundToViewModel() {
       cancellables.removeAll()
-      let input = MainViewModelInput(onAppear: onAppearPublisher.eraseToAnyPublisher())
+      let input = MainViewModelInput(onAppear: onAppearPublisher.eraseToAnyPublisher(), 
+                                     onReload: onReloadPublisher.eraseToAnyPublisher())
       
       let output = viewModel.transform(input: input)
       output.sink { [weak self] state in
@@ -49,10 +52,15 @@ final class MainViewController: UIViewController {
       case .idle:
          print("Idle")
       case .loading:
-         print("Loading...")
+         Haptics.play(.light)
+         SVProgressHUD.show()
       case .loaded(let screenViewModel):
+         SVProgressHUD.dismiss()
          mainView.apply(viewModel: screenViewModel)
       case .error(let errorMessage):
+         SVProgressHUD.dismiss()
+         UIAlertController.show(message: errorMessage.rawValue,
+                                on: self)
          print("Error: \(errorMessage.rawValue)")
       }
    }
@@ -60,6 +68,6 @@ final class MainViewController: UIViewController {
 
 extension MainViewController: MainViewDelegate {
    func didTapReloadButton() {
-      //
+      onReloadPublisher.send(())
    }
 }
