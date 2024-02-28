@@ -7,7 +7,7 @@ protocol WeatherDataModelMapping {
 final class WeatherDataModelMapper: WeatherDataModelMapping {
    func map(_ input: WeatherDataModel) -> WeatherModel {
       .init(city: input.name,
-            coutry: input.sys.country ?? "Unknown",
+            country: input.sys.country,
             coordinates: .init(longitude: input.coordinates.longitude,
                                latitude: input.coordinates.latitude),
             weather: mapWeather(input.weather),

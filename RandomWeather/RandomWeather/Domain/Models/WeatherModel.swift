@@ -2,7 +2,7 @@ import Foundation
 
 struct WeatherModel {
    let city: String
-   let coutry: String
+   let country: String?
    let coordinates: CoordinatesModel
    let weather: [WeatherInfoModel]
    let extraInformation: ExtraInformationModel

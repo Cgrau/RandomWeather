@@ -27,6 +27,7 @@ final class MainInformationView: View {
       label.textAlignment = .center
       label.font = Constants.Location.font
       label.translatesAutoresizingMaskIntoConstraints = false
+      label.numberOfLines = 0
       return label
    }()
    
@@ -175,7 +176,10 @@ extension MainInformationView {
       descriptionLabel.text = viewModel.description
       minTemperatureLabel.text = viewModel.minTemperature
       maxTemperatureLabel.text = viewModel.maxTemperature
-      guard let iconURL = viewModel.iconURL else { return }
+      guard let iconURL = viewModel.iconURL else {
+         iconImageView.removeFromSuperview()
+         return
+      }
       iconImageView.kf.setImage(with: iconURL, options: [.loadDiskFileSynchronously])
    }
 }

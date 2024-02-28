@@ -25,7 +25,8 @@ public class MainViewModel: ObservableObject, MainViewModelable {
    }
    
    static func buildDefault() -> Self {
-      .init(getInformation: GetInformation.buildDefault().execute, scheduler: .main)
+      .init(getInformation: GetInformation.buildDefault().execute,
+            scheduler: .main)
    }
    
    func transform(input: MainViewModelInput) -> MainViewModelOutput {
@@ -34,8 +35,7 @@ public class MainViewModel: ObservableObject, MainViewModelable {
       let onAppearAction = input.onAppear
          .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
             guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
-            
-            return self.getInformation(41.3874, 2.1686)
+            return self.getInformation()
                .receive(on: scheduler)
                .map { viewModel in
                   return .loaded(viewModel)
@@ -49,8 +49,8 @@ public class MainViewModel: ObservableObject, MainViewModelable {
          .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
          .removeDuplicates()
          .eraseToAnyPublisher()
-
-     return onAppearAction
+      
+      return onAppearAction
    }
 }
 

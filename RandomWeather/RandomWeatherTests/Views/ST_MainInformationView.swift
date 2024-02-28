@@ -15,6 +15,12 @@ class ST_MainInformationView: XCTestCase {
    }
    
    func test_view() {
+      let viewModel = givenViewModel(iconURL: URL(string: KingFisherMock.Constants.imageURLString))
+      sut.apply(viewModel: viewModel)
+      assertSnapshot(matching: sut, as: .image)
+   }
+   
+   func test_view_no_icon() {
       let viewModel = givenViewModel()
       sut.apply(viewModel: viewModel)
       assertSnapshot(matching: sut, as: .image)
@@ -26,12 +32,12 @@ class ST_MainInformationView: XCTestCase {
       super.tearDown()
    }
    
-   private func givenViewModel() -> MainInformationViewModel {
+   private func givenViewModel(iconURL: URL? = nil) -> MainInformationViewModel {
       .init(location: "Barcelona, ES",
             latitude: "Lat: 41.3874",
             longitude: "Lon: 2.1686",
             temperature: "11°C",
-            iconURL: URL(string: KingFisherMock.Constants.imageURLString),
+            iconURL: iconURL,
             description: "Mostly Cloudy",
             minTemperature: "L: 9°C",
             maxTemperature: "H: 9°C")
