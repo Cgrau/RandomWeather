@@ -13,6 +13,11 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
       static let temperature = "%.1f°C"
       static let minTemperature = "L: %.1f°C"
       static let maxTemperature = "H: %.1f°C"
+      enum SunInformation {
+         static let title = "Sunrise and sunset times:"
+         static let sunrise = "Sunrise: %@"
+         static let sunset = "Sunset: %@"
+      }
       enum Wind {
          static let title = "Wind Information:"
          static let speed = "Speed: %.2f"
@@ -24,11 +29,6 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
          static let humidity = "Humidity: %.0f%%"
          static let seaLevel = "Pressure at sea level: %.0f hPa"
          static let groundLevel = "Pressure at ground level: %.0f hPa"
-      }
-      enum SunInformation {
-         static let title = "Sunrise and sunset times:"
-         static let sunrise = "Sunrise: %@"
-         static let sunset = "Sunset: %@"
       }
    }
    

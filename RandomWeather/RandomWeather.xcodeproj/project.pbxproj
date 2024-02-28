@@ -54,6 +54,7 @@
 		2C90A0AF2B8FD72A004F14BC /* SunInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0AE2B8FD72A004F14BC /* SunInformationView.swift */; };
 		2C90A0B12B8FD734004F14BC /* SunInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0B02B8FD734004F14BC /* SunInformationViewModel.swift */; };
 		2C90A0B32B8FD879004F14BC /* ST_SunInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */; };
+		2C90A0B82B8FDF25004F14BC /* WeatherToMainScreenViewModelMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0B72B8FDF25004F14BC /* WeatherToMainScreenViewModelMapperSpec.swift */; };
 		2C9ABEA42B8D125100878205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA32B8D125100878205 /* AppDelegate.swift */; };
 		2C9ABEA62B8D125100878205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA52B8D125100878205 /* SceneDelegate.swift */; };
 		2C9ABEAD2B8D125300878205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9ABEAC2B8D125300878205 /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		2C90A0AE2B8FD72A004F14BC /* SunInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInformationView.swift; sourceTree = "<group>"; };
 		2C90A0B02B8FD734004F14BC /* SunInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInformationViewModel.swift; sourceTree = "<group>"; };
 		2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ST_SunInformationView.swift; sourceTree = "<group>"; };
+		2C90A0B72B8FDF25004F14BC /* WeatherToMainScreenViewModelMapperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherToMainScreenViewModelMapperSpec.swift; sourceTree = "<group>"; };
 		2C9ABEA02B8D125100878205 /* RandomWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9ABEA32B8D125100878205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9ABEA52B8D125100878205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -282,9 +284,9 @@
 			isa = PBXGroup;
 			children = (
 				2C90A0802B8F2AEE004F14BC /* ST_MainInformationView.swift */,
+				2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */,
 				2C90A09A2B8FA232004F14BC /* ST_WindInformationView.swift */,
 				2C90A0A82B8FB805004F14BC /* ST_ExtraInformationView.swift */,
-				2C90A0B22B8FD879004F14BC /* ST_SunInformationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -309,6 +311,14 @@
 				2C90A0AC2B8FBACA004F14BC /* Double+ToCelcius.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		2C90A0B62B8FDF13004F14BC /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				2C90A0B72B8FDF25004F14BC /* WeatherToMainScreenViewModelMapperSpec.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 		2C9ABE972B8D125100878205 = {
@@ -348,6 +358,7 @@
 		2C9ABEB92B8D125300878205 /* RandomWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C90A0B62B8FDF13004F14BC /* Mappers */,
 				2C90A0842B8F5C28004F14BC /* Utils */,
 				2C90A07F2B8F2ADF004F14BC /* Views */,
 				2C90A0512B8E4BFC004F14BC /* Resources */,
@@ -615,6 +626,7 @@
 				2C90A0722B8E6041004F14BC /* URLSessionMock.swift in Sources */,
 				2C90A0742B8E61EB004F14BC /* URLSessionAPIClientSpec.swift in Sources */,
 				2C90A0812B8F2AEE004F14BC /* ST_MainInformationView.swift in Sources */,
+				2C90A0B82B8FDF25004F14BC /* WeatherToMainScreenViewModelMapperSpec.swift in Sources */,
 				2C90A0B32B8FD879004F14BC /* ST_SunInformationView.swift in Sources */,
 				2C90A0A92B8FB805004F14BC /* ST_ExtraInformationView.swift in Sources */,
 				2C90A0862B8F5C37004F14BC /* KingFisher+MockImage.swift in Sources */,
