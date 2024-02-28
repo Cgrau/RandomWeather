@@ -1,6 +1,6 @@
 import Foundation
 
-struct MainInformationViewModel {
+struct MainInformationViewModel: Equatable {
    let location: String
    let latitude: String
    let longitude: String

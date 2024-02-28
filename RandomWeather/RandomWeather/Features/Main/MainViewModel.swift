@@ -36,7 +36,17 @@ public class MainViewModel: ObservableObject, MainViewModelable {
          } receiveValue: { model in
             print(model)
          }
-         return .loaded(.init(result: "Call a use case to perform the action and return a ViewModel"))
+         return .loaded(
+            .init(navigationTitle: "Random Weather",
+                  information: .init(location: "Barcelona, ES",
+                                     latitude: "Lat: 41.3874",
+                                     longitude: "Lon: 2.1686",
+                                     temperature: "11°C",
+                                     iconURL: URL(string: "https://openweathermap.org/img/wn/10d@2x.png"),
+                                     description: "Mostly Cloudy",
+                                     minTemperature: "L: 9°C",
+                                     maxTemperature: "H: 9°C"))
+         )
       }.removeDuplicates()
          .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
          .eraseToAnyPublisher()

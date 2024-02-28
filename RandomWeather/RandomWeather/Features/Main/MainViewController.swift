@@ -59,4 +59,7 @@ final class MainViewController: UIViewController {
 }
 
 extension MainViewController: MainViewDelegate {
+   func didTapReloadButton() {
+      //
+   }
 }

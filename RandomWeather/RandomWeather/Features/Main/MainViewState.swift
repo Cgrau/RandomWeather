@@ -12,5 +12,6 @@ enum MainViewState: Equatable {
 }
 
 struct MainScreenViewModel: Equatable {
-   var result: String
+   var navigationTitle: String
+   var information: MainInformationViewModel
 }
