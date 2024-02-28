@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol WeatherToMainScreenViewModelMapping {
    func map(_ input: WeatherModel) -> MainScreenViewModel
@@ -13,6 +13,10 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
       static let temperature = "%.1f°C"
       static let minTemperature = "L: %.1f°C"
       static let maxTemperature = "H: %.1f°C"
+      enum Wind {
+         static let speed = "Speed: %.2f"
+         static let gust = "Gust: %.2f"
+      }
    }
    
    func map(_ input: WeatherModel) -> MainScreenViewModel {
@@ -27,7 +31,8 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
             description: input.weather.first?.description ?? "",
             minTemperature: map(minTemperature: input.extraInformation.minTemperature),
             maxTemperature: map(maxTemperature: input.extraInformation.maxTemperature)
-         )
+         ), 
+         windInformation: map(wind: input.wind)
       )
    }
    
@@ -60,5 +65,17 @@ final class WeatherToMainScreenViewModelMapper: WeatherToMainScreenViewModelMapp
    private func map(maxTemperature: Double?) -> String {
       guard let maxTemperature else { return "-" }
       return String(format: Constants.maxTemperature, maxTemperature)
+   }
+   
+   private func map(wind: WindModel) -> WindInformationViewModel? {
+      var arrow: UIImage?
+      if let windDirection = wind.directionDegrees {
+         arrow = .upArrow.rotated(byDegrees: CGFloat(windDirection))
+      }
+      guard let speed = wind.speed, let gust = wind.gust else { return nil }
+      return .init(title: "Wind Information:",
+                   speed: String(format: Constants.Wind.speed, speed),
+                   gust: String(format: Constants.Wind.gust, gust),
+                   directionImage: arrow)
    }
 }
