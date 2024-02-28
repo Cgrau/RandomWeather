@@ -31,6 +31,8 @@
 		2C90A07C2B8F2701004F14BC /* MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A07B2B8F2701004F14BC /* MainInformationView.swift */; };
 		2C90A07E2B8F272E004F14BC /* MainInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A07D2B8F272E004F14BC /* MainInformationViewModel.swift */; };
 		2C90A0812B8F2AEE004F14BC /* ST_MainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0802B8F2AEE004F14BC /* ST_MainInformationView.swift */; };
+		2C90A0832B8F5BCC004F14BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C90A0822B8F5BCC004F14BC /* Assets.xcassets */; };
+		2C90A0862B8F5C37004F14BC /* KingFisher+MockImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A0852B8F5C37004F14BC /* KingFisher+MockImage.swift */; };
 		2C9ABEA42B8D125100878205 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA32B8D125100878205 /* AppDelegate.swift */; };
 		2C9ABEA62B8D125100878205 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9ABEA52B8D125100878205 /* SceneDelegate.swift */; };
 		2C9ABEAD2B8D125300878205 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9ABEAC2B8D125300878205 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		2C90A07B2B8F2701004F14BC /* MainInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInformationView.swift; sourceTree = "<group>"; };
 		2C90A07D2B8F272E004F14BC /* MainInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInformationViewModel.swift; sourceTree = "<group>"; };
 		2C90A0802B8F2AEE004F14BC /* ST_MainInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ST_MainInformationView.swift; sourceTree = "<group>"; };
+		2C90A0822B8F5BCC004F14BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C90A0852B8F5C37004F14BC /* KingFisher+MockImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KingFisher+MockImage.swift"; sourceTree = "<group>"; };
 		2C9ABEA02B8D125100878205 /* RandomWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9ABEA32B8D125100878205 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9ABEA52B8D125100878205 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +232,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		2C90A0842B8F5C28004F14BC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2C90A0852B8F5C37004F14BC /* KingFisher+MockImage.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		2C9ABE972B8D125100878205 = {
 			isa = PBXGroup;
 			children = (
@@ -265,10 +277,12 @@
 		2C9ABEB92B8D125300878205 /* RandomWeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				2C90A0842B8F5C28004F14BC /* Utils */,
 				2C90A07F2B8F2ADF004F14BC /* Views */,
 				2C90A0512B8E4BFC004F14BC /* Resources */,
 				2C90A0712B8E6041004F14BC /* URLSessionMock.swift */,
 				2C90A0732B8E61EB004F14BC /* URLSessionAPIClientSpec.swift */,
+				2C90A0822B8F5BCC004F14BC /* Assets.xcassets */,
 			);
 			path = RandomWeatherTests;
 			sourceTree = "<group>";
@@ -389,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C90A0552B8E4D41004F14BC /* get.weather.success2.json in Resources */,
+				2C90A0832B8F5BCC004F14BC /* Assets.xcassets in Resources */,
 				2C90A0542B8E4D41004F14BC /* get.weather.success1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +526,7 @@
 				2C90A0722B8E6041004F14BC /* URLSessionMock.swift in Sources */,
 				2C90A0742B8E61EB004F14BC /* URLSessionAPIClientSpec.swift in Sources */,
 				2C90A0812B8F2AEE004F14BC /* ST_MainInformationView.swift in Sources */,
+				2C90A0862B8F5C37004F14BC /* KingFisher+MockImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

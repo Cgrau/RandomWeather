@@ -5,9 +5,12 @@ import XCTest
 class ST_MainInformationView: XCTestCase {
    
    private var sut: MainInformationView!
+   private var kingFisherMock: KingFisherMock!
    
    override func setUp() {
       super.setUp()
+      kingFisherMock = KingFisherMock()
+      kingFisherMock.mockImage()
       sut = MainInformationView(frame: .init(x: 0, y: 0, width: 320, height: 250))
    }
    
@@ -19,6 +22,7 @@ class ST_MainInformationView: XCTestCase {
    
    override func tearDown() {
       sut = nil
+      kingFisherMock.clearCache()
       super.tearDown()
    }
    
@@ -27,6 +31,7 @@ class ST_MainInformationView: XCTestCase {
             latitude: "Lat: 41.3874",
             longitude: "Lon: 2.1686",
             temperature: "11°C",
+            iconURL: URL(string: KingFisherMock.Constants.imageURLString),
             description: "Mostly Cloudy",
             minTemperature: "L: 9°C",
             maxTemperature: "H: 9°C")

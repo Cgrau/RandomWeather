@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 import SnapKit
 
 final class MainInformationView: View {
@@ -57,6 +58,15 @@ final class MainInformationView: View {
       return label
    }()
    
+   private var temperatureStackView: UIStackView = {
+      let stackView = UIStackView()
+      stackView.axis = .horizontal
+      stackView.alignment = .fill
+      stackView.distribution = .equalSpacing
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+      return stackView
+   }()
+   
    private var temperatureLabel: UILabel = {
       let label = UILabel()
       label.textColor = .black
@@ -64,6 +74,12 @@ final class MainInformationView: View {
       label.font = Constants.Temperature.font
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
+   }()
+   
+   private var iconImageView: UIImageView = {
+      let imageView = UIImageView()
+      imageView.contentMode = .scaleAspectFit
+      return imageView
    }()
    
    private var descriptionLabel: UILabel = {
@@ -114,8 +130,9 @@ final class MainInformationView: View {
    
    private func addSubviews() {
       [latitudeLabel, longitudeLabel].forEach(coordinatesStackView.addArrangedSubview)
+      [temperatureLabel, iconImageView].forEach(temperatureStackView.addArrangedSubview)
       [minTemperatureLabel, maxTemperatureLabel].forEach(minmaxStackView.addArrangedSubview)
-      [locationLabel, coordinatesStackView, temperatureLabel, descriptionLabel, minmaxStackView].forEach(addSubview)
+      [locationLabel, coordinatesStackView, temperatureStackView, descriptionLabel, minmaxStackView].forEach(addSubview)
    }
    
    override func setupConstraints() {
@@ -128,10 +145,13 @@ final class MainInformationView: View {
          make.top.equalTo(locationLabel.snp.bottom).offset(Spacing.xs)
          make.centerX.equalToSuperview()
       }
-      temperatureLabel.snp.makeConstraints { make in
+      temperatureStackView.snp.makeConstraints { make in
          make.top.equalTo(coordinatesStackView.snp.bottom).offset(Spacing.xs)
-         make.leading.equalToSuperview().offset(Spacing.m)
-         make.trailing.equalToSuperview().offset(-Spacing.m)
+         make.centerX.equalToSuperview()
+      }
+      iconImageView.snp.makeConstraints { make in
+         make.height.equalToSuperview()
+         make.width.equalTo(iconImageView.snp.height)
       }
       descriptionLabel.snp.makeConstraints { make in
          make.top.equalTo(temperatureLabel.snp.bottom).offset(Spacing.xs)
@@ -155,5 +175,7 @@ extension MainInformationView {
       descriptionLabel.text = viewModel.description
       minTemperatureLabel.text = viewModel.minTemperature
       maxTemperatureLabel.text = viewModel.maxTemperature
+      guard let iconURL = viewModel.iconURL else { return }
+      iconImageView.kf.setImage(with: iconURL, options: [.loadDiskFileSynchronously])
    }
 }
