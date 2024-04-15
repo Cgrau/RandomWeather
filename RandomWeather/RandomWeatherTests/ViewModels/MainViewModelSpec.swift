@@ -28,7 +28,11 @@ final class MainViewModelSpec: XCTestCase {
          }
          .store(in: &cancellables)
       
-      XCTAssertEqual(receivedStates, [.loading])
+      XCTAssertEqual(receivedStates, 
+                     [
+                        .loading,
+                        .loaded(givenViewModel())
+                     ])
       XCTAssertTrue(getInformationCalled)
       XCTAssertEqual(getInformationCalledCount, 1)
    }
@@ -45,7 +49,11 @@ final class MainViewModelSpec: XCTestCase {
          }
          .store(in: &cancellables)
       
-      XCTAssertEqual(receivedStates, [.loading])
+      XCTAssertEqual(receivedStates,
+                     [
+                        .loading,
+                        .loaded(givenViewModel())
+                     ])
       XCTAssertTrue(getInformationCalled)
       XCTAssertEqual(getInformationCalledCount, 1)
    }
@@ -87,7 +95,7 @@ final class MainViewModelSpec: XCTestCase {
          return Just(self.givenViewModel())
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
-      }, scheduler: .main)
+      })
    }
    
    private func givenViewModel() -> MainScreenViewModel {

@@ -2,14 +2,10 @@ import UIKit
 
 open class View: UIView {
   
-  fileprivate var tap: UITapGestureRecognizer?
-  
   public override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
   }
-  
-  private var selectedScrollView: UIScrollView?
   
   @available(*, unavailable)
   required public init?(coder aDecoder: NSCoder) {
@@ -26,7 +22,6 @@ open class View: UIView {
     backgroundColor = .white
     setupView()
     setupConstraints()
-    bindViewModel()
   }
   
   open func setupView() {
@@ -35,50 +30,5 @@ open class View: UIView {
   
   open func setupConstraints() {
     fatalError("`View` subclasses should implement \(#function) ⚠️")
-  }
-  
-  open func bindViewModel() {}
-}
-
-extension View {
-  public func setupKeyboardBehaviour(to scrollView: UIScrollView) {
-    selectedScrollView = scrollView
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(View.keyboardWillShow),
-                                           name: UIResponder.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(View.keyboardWillHide),
-                                           name: UIResponder.keyboardWillHideNotification, object: nil)
-  }
-  
-  @objc func keyboardWillShow(_ notification: Notification) {
-    guard let userInfo = notification.userInfo else { return }
-    guard let keyboardKey = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
-    addTapHideKeyboard()
-    let keyboardSize = keyboardKey.cgRectValue
-    selectedScrollView?.contentInset = UIEdgeInsets(top: .zero, left: .zero, bottom: keyboardSize.height, right: .zero)
-  }
-  
-  @objc func keyboardWillHide(_ notification: Notification) {
-    guard let userInfo = notification.userInfo else { return }
-    guard userInfo[UIResponder.keyboardFrameBeginUserInfoKey] != nil else { return }
-    removeTapHideKeyboard()
-    selectedScrollView?.contentInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
-  }
-  
-  private func addTapHideKeyboard() {
-    tap = UITapGestureRecognizer(target: self,
-                                 action: #selector(self.dismissKeyboard))
-    guard let tap = tap else { return }
-    addGestureRecognizer(tap)
-  }
-  
-  func removeTapHideKeyboard() {
-    guard let tap = tap else { return }
-    removeGestureRecognizer(tap)
-  }
-  
-  @objc func dismissKeyboard() {
-    endEditing(true)
   }
 }

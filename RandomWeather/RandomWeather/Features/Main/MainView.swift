@@ -8,7 +8,7 @@ protocol MainViewDelegate: AnyObject {
 final class MainView: View {
    private enum Constants {
       enum NavigationTitle {
-         static let font = UIFont.boldSystemFont(ofSize: 32)
+         static let font = UIFont.boldSystemFont(ofSize: 25)
       }
    }
    

@@ -7,10 +7,13 @@ final class MainViewController: UIViewController {
    private var viewModel: MainViewModelable
    private var onAppearPublisher = PassthroughSubject<Void, Never>()
    private var onReloadPublisher = PassthroughSubject<Void, Never>()
+   private let scheduler: DispatchQueue
    private var cancellables: Set<AnyCancellable> = []
    
-   required init(viewModel: MainViewModelable) {
+   required init(viewModel: MainViewModelable,
+                 scheduler: DispatchQueue) {
       self.viewModel = viewModel
+      self.scheduler = scheduler
       super.init(nibName: nil, bundle: nil)
    }
    
@@ -19,7 +22,8 @@ final class MainViewController: UIViewController {
    }
    
    static func buildDefault() -> Self {
-      .init(viewModel: MainViewModel.buildDefault())
+      .init(viewModel: MainViewModel.buildDefault(), 
+            scheduler: .main)
    }
    
    override func loadView() {
@@ -42,6 +46,7 @@ final class MainViewController: UIViewController {
                                      onReloadTapped: onReloadPublisher.eraseToAnyPublisher())
       
       let output = viewModel.transform(input: input)
+         .receive(on: scheduler)
       output.sink { [weak self] state in
          self?.handleState(state)
       }.store(in: &cancellables)

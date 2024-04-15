@@ -12,27 +12,19 @@ protocol MainViewModelable: AnyObject {
    func transform(input: MainViewModelInput) -> MainViewModelOutput
 }
 
-public class MainViewModel: ObservableObject, MainViewModelable {
+public class MainViewModel: MainViewModelable {
    @Published private(set) var state: MainViewState = .loading
    private let getInformation: GetInformation.UseCase
-   private let scheduler: DispatchQueue
    
-   private var cancellableBag = Set<AnyCancellable>()
-   
-   required init(getInformation: @escaping GetInformation.UseCase,
-                 scheduler: DispatchQueue) {
+   required init(getInformation: @escaping GetInformation.UseCase) {
       self.getInformation = getInformation
-      self.scheduler = scheduler
    }
    
    static func buildDefault() -> Self {
-      .init(getInformation: GetInformation.buildDefault().execute,
-            scheduler: .main)
+      .init(getInformation: GetInformation.buildDefault().execute)
    }
    
    func transform(input: MainViewModelInput) -> MainViewModelOutput {
-      cancellableBag.removeAll()
-      
       let onAppearAction = input.onAppear
          .flatMap { [weak self] _ -> AnyPublisher<MainViewState, Never> in
             guard let self = self else { return Just(.error(.inconsistency)).eraseToAnyPublisher() }
@@ -60,7 +52,6 @@ public class MainViewModel: ObservableObject, MainViewModelable {
    
    private func getNewData() -> MainViewModelOutput {
       self.getInformation()
-         .receive(on: scheduler)
          .map { viewModel in
             return .loaded(viewModel)
          }
